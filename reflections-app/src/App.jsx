@@ -815,7 +815,7 @@ const openSlide = (entry) => {
                 {!socialMode && (
                   <div className="space-y-2">
                     <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                      <Zap size={18} /> The Spark
+                      <Zap size={18} /> 
                     </h4>
                     <p className="text-lg text-gray-700 leading-relaxed">{selectedEntry.reason}</p>
                   </div>
