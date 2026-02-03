@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves, Lock, ArrowRightCircle, Share2, Maximize2, Play, Pause } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves, Lock, ArrowRightCircle, Share2, Maximize2 } from 'lucide-react';
 
 // --- FIREBASE IMPORTS ---
 import { initializeApp } from 'firebase/app';
@@ -8,7 +8,6 @@ import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } 
 
 // --- CONFIGURATION ---
 const SITE_PASSWORD = "brit2026"; // Shared passcode
-const AUTO_SCROLL_DURATION = 10000; // 10 seconds
 
 // --- FIREBASE SETUP ---
 let firebaseApp, auth, db, appId;
@@ -341,25 +340,6 @@ export default function App() {
       setIsSubmitting(false);
     }
   };
-
-   // 2. SOCIAL MODE AUTO-SCROLL (The requested feature)
-  useEffect(() => {
-    let interval;
-
-    if (socialMode && selectedEntry && !isPaused && entries.length > 0) {
-      interval = setInterval(() => {
-        setSelectedEntry(current => {
-          if (!current) return entries[0];
-          const currentIndex = entries.findIndex(e => e.id === current.id);
-          // Loop back to 0 if at the end
-          const nextIndex = (currentIndex + 1) % entries.length;
-          return entries[nextIndex];
-        });
-      }, AUTO_SCROLL_DURATION);
-    }
-
-    return () => clearInterval(interval);
-  }, [socialMode, selectedEntry, isPaused, entries]);
 
   // --- VIEW LOGIC ---
 
@@ -753,19 +733,6 @@ const openSlide = (entry) => {
           {/* Controls - Hidden in Social Mode */}
           {!socialMode && (
             <>
-              <div className="h-1.5 w-full bg-gray-100 flex justify-start">
-                <div 
-                  key={selectedEntry.id} // Key forces reset on change
-                  className={`h-full bg-[#ad207d] origin-left ${isPaused ? 'opacity-50' : ''}`}
-                  style={{ 
-                    animation: isPaused ? 'none' : `progress ${AUTO_SCROLL_DURATION}ms linear forwards`,
-                    width: isPaused ? '100%' : 'auto' 
-                  }} 
-                />
-                <style>{`
-                  @keyframes progress { from { width: 0%; } to { width: 100%; } }
-                `}</style>
-              </div>
               <button onClick={closeSlide} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50">
                 <X size={32} />
               </button>
