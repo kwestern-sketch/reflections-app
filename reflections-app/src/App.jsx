@@ -341,6 +341,33 @@ export default function App() {
     }
   };
 
+  // --- SOCIAL SHARE ACTIONS ---
+  const handleLinkedInShare = () => {
+    const url = window.location.href;
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+  };
+
+  const handleCopyCaption = () => {
+    if (!selectedEntry) return;
+    const caption = `"${selectedEntry.headline || selectedEntry.reason}" - ${selectedEntry.name} (${selectedEntry.department}) #BritDevelopmentDay`;
+    navigator.clipboard.writeText(caption);
+    alert("Caption copied! You can now paste it into Instagram or other apps.");
+  };
+
+  const handleNativeShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Brit Development Day Reflection',
+        text: `Check out ${selectedEntry.name}'s reflection: "${selectedEntry.headline}"`,
+        url: window.location.href,
+      })
+      .catch((error) => console.log('Error sharing', error));
+    } else {
+      handleCopyCaption(); // Fallback
+    }
+  };
+
+
   // --- VIEW LOGIC ---
 
 const openSlide = (entry) => {
