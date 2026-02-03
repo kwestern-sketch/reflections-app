@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves } from 'lucide-react';
+import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves, Lock, ArrowRightCircle } from 'lucide-react';
 
 // --- FIREBASE IMPORTS ---
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from 'firebase/auth';
 import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from 'firebase/firestore';
+
+// --- CONFIGURATION ---
+const SITE_PASSWORD = "brit"; // Shared passcode
 
 // --- FIREBASE SETUP ---
 let firebaseApp, auth, db, appId;
@@ -61,6 +64,66 @@ const BritTLLogo = ({ size = "sm" }) => {
   );
 };
 
+const PasscodeScreen = ({ onVerify }) => {
+  const [input, setInput] = useState('');
+  const [error, setError] = useState(false);
+
+  const checkPassword = (e) => {
+    e.preventDefault();
+    if (input.toLowerCase() === SITE_PASSWORD.toLowerCase()) {
+      onVerify();
+    } else {
+      setError(true);
+      setInput('');
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-100 text-center space-y-6">
+        <div className="flex justify-center mb-2">
+          <BritTLLogo size="lg" />
+        </div>
+        
+        <div className="space-y-2">
+          <h2 className="text-2xl font-bold text-slate-800">Staff Access Only</h2>
+          <p className="text-slate-500">Please enter the reflection passcode.</p>
+        </div>
+
+        <form onSubmit={checkPassword} className="space-y-4">
+          <div className="relative">
+            <Lock className="absolute left-3 top-3.5 text-slate-400" size={20} />
+            <input 
+              type="password" 
+              value={input}
+              onChange={(e) => { setInput(e.target.value); setError(false); }}
+              className={`w-full pl-10 pr-4 py-3 rounded-lg border outline-none transition-all font-medium ${error ? 'border-red-300 bg-red-50 focus:border-red-500' : 'border-slate-200 focus:border-[#ad207d] focus:ring-2 focus:ring-pink-100'}`}
+              placeholder="Enter passcode..."
+              autoFocus
+            />
+          </div>
+          
+          <button 
+            type="submit" 
+            className="w-full bg-[#ad207d] hover:bg-[#8a1a63] text-white font-bold py-3 rounded-lg shadow-lg shadow-pink-100 flex items-center justify-center gap-2 transition-all transform active:scale-95"
+          >
+            <span>Unlock Gallery</span>
+            <ArrowRightCircle size={20} />
+          </button>
+        </form>
+        
+        {error && (
+          <p className="text-red-500 text-sm font-medium animate-pulse">Incorrect passcode. Please try again.</p>
+        )}
+        
+        <p className="text-xs text-slate-400 pt-4 border-t border-slate-50">
+          Development Day Reflections 2026
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const DEPARTMENTS = [
   "AEN", "Applied Theatre", "BRIT Kids", "Business", "Careers", "Communications", 
   "Counselling", "Dance", "Data & Exams", "Development", "Digital Arts", "English", 
@@ -101,6 +164,7 @@ const DEMO_ENTRIES = [
 ];
 
 export default function App() {
+  const [isPasscodeVerified, setIsPasscodeVerified] = useState(false);
   const [view, setView] = useState('gallery');
   const [sortBy, setSortBy] = useState('latest');
   const [entries, setEntries] = useState(DEMO_ENTRIES);
@@ -179,6 +243,23 @@ export default function App() {
     return () => unsubscribeData();
   }, [user]);
 
+  // --- SECURITY CHECK ---
+  useEffect(() => {
+    const savedSession = sessionStorage.getItem('brit_auth');
+    if (savedSession === 'true') {
+      setIsPasscodeVerified(true);
+    }
+  }, []);
+
+  const handleVerify = () => {
+    setIsPasscodeVerified(true);
+    sessionStorage.setItem('brit_auth', 'true');
+  };
+
+  // --- GATEKEEPER RENDER ---
+  if (!isPasscodeVerified) {
+    return <PasscodeScreen onVerify={handleVerify} />;
+  }
 
   // --- FORM HANDLING ---
 
