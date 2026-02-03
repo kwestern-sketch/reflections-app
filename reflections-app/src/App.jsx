@@ -745,7 +745,7 @@ const openSlide = (entry) => {
             </>
           )}
 
-      {/* Social Mode Action Bar (Bottom Overlay) */}
+{/* Social Mode Action Bar (Bottom Overlay) */}
           {socialMode && (
             <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-4 z-50 pointer-events-auto animate-in slide-in-from-bottom-4 fade-in duration-300">
               
