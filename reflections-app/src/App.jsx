@@ -440,9 +440,16 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setView('gallery')}>
             <BritTLLogo size="sm" />
-           <div className="flex items-baseline gap-1 text-base sm:text-xl flex-wrap">
-              <span className="font-hand font-bold text-gray-800 tracking-tight">Development Day</span>
-              <span className="font-hand font-bold text-[#ad207d]">Reflections 2026</span>
+           <div className="flex items-baseline gap-1 text-lg sm:text-xl">
+             {/* 1. Desktop Version (Hidden on small screens) */}
+    <span className="hidden sm:inline font-hand font-bold text-gray-800 tracking-tight">
+      Development Day <span className="text-[#ad207d]">Reflections 2026</span>
+    </span>
+    
+    {/* 2. Mobile Version (Visible ONLY on small screens) */}
+    <span className="sm:hidden font-hand font-bold text-[#ad207d]">
+      Reflections 2026
+    </span>
             </div>
           </div>
           
