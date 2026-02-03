@@ -440,7 +440,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setView('gallery')}>
             <BritTLLogo size="sm" />
-            <div className="flex items-baseline gap-1 text-xl flex-wrap">
+           <div className="flex items-baseline gap-1 text-base sm:text-xl flex-wrap">
               <span className="font-hand font-bold text-gray-800 tracking-tight">Development Day</span>
               <span className="font-hand font-bold text-[#ad207d]">Reflections 2026</span>
             </div>
@@ -727,11 +727,11 @@ export default function App() {
           </button>
 
           <div className="bg-white w-full max-w-5xl max-h-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row h-full md:h-auto slide-up">
-            <div className="md:w-5/12 bg-gray-100 h-64 md:h-auto relative shrink-0">
+            <div className="md:w-5/12 bg-black h-64 md:h-auto relative shrink-0">
               <img 
                 src={selectedEntry.image || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"} 
                 alt="Detail" 
-                className="absolute inset-0 w-full h-full object-cover" 
+                className="absolute inset-0 w-full h-full object-contain" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden"></div>
               <div className="absolute bottom-4 left-4 text-white md:hidden">
