@@ -486,16 +486,18 @@ export default function App() {
                  <div className="space-y-2 pt-2">
                     <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
                       <Type size={16} className="text-[#ad207d]" />
-                      Activity Headline: What did you do? (Give some details)
+                      Activity Headline: What did you do? 
                     </label>
-                    <input 
-                      type="text"
+                       <textarea 
+                     
                       name="headline"
                       required
+                  
+                      rows="2"
                       value={formData.headline}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#ad207d] focus:ring-2 focus:ring-pink-500/10 outline-none transition-all font-medium placeholder:text-gray-400"
-                      placeholder=""
+                      placeholder="Give some details"
                     />
                   </div>
 
