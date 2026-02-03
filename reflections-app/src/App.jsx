@@ -489,10 +489,8 @@ export default function App() {
                       Activity Headline: What did you do? 
                     </label>
                        <textarea 
-                     
                       name="headline"
                       required
-                  
                       rows="2"
                       value={formData.headline}
                       onChange={handleInputChange}
