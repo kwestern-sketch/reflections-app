@@ -449,7 +449,7 @@ const openSlide = (entry) => {
            <div className="flex items-baseline gap-1 text-lg sm:text-xl">
              {/* 1. Desktop Version (Hidden on small screens) */}
     <span className="hidden sm:inline font-hand font-bold text-gray-800 tracking-tight">
-      CPD <span className="text-[#ad207d]">Reflections</span>
+      CPD&nbsp ; <span className="text-[#ad207d]">Reflections</span>
     </span>
     
     {/* 2. Mobile Version (Visible ONLY on small screens) */}
