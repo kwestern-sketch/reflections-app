@@ -789,7 +789,7 @@ const openSlide = (entry) => {
                     <h3 className="font-extrabold text-gray-900 text-2xl">{selectedEntry.name}</h3>
                     <div className="flex items-center gap-2 text-sm text-gray-500 mt-1 font-medium">
                       <span className="bg-pink-50 text-[#ad207d] px-2 py-0.5 rounded">{selectedEntry.department}</span>
-                      {socialMode && <span className="text-[#ad207d] font-bold">• Reflections 2026</span>}
+                      {socialMode && <span className="text-[#ad207d] font-bold">• BRIT Staff Development Day 2026</span>}
                       {!socialMode && <><span>•</span><span>{selectedEntry.date}</span></>}
                     </div>
                   </div>
@@ -823,7 +823,7 @@ const openSlide = (entry) => {
 
                 <div className="space-y-3">
                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Lightbulb size={18} /> The Lightbulb
+                    <Lightbulb size={18} /> 
                   </h4>
                   <div className="bg-pink-50/80 p-6 rounded-xl border border-yellow-100 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.takeaway}</p>
@@ -832,7 +832,7 @@ const openSlide = (entry) => {
 
                 <div className="space-y-3">
                   <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Waves size={18} /> The Ripple Effect
+                    <Waves size={18} /> 
                   </h4>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.impact}</p>
