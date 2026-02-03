@@ -820,6 +820,7 @@ const openSlide = (entry) => {
                 )}
 
                 <div className="space-y-3">
+                  {!socialMode && (
                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
                     <Lightbulb size={18} /> Key Takeaway
                   </h4>
@@ -827,15 +828,19 @@ const openSlide = (entry) => {
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.takeaway}</p>
                   </div>
                 </div>
+                )}
 
                 <div className="space-y-3">
+                  {!socialMode && (
                   <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
                     <Waves size={18} /> Future Impact
                   </h4>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.impact}</p>
                   </div>
+                  
                 </div>
+               )}
               </div>
               
               {!socialMode && (
