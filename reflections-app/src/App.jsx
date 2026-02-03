@@ -494,7 +494,7 @@ export default function App() {
                       rows="2"
                       value={formData.headline}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#ad207d] focus:ring-2 focus:ring-pink-500/10 outline-none transition-all font-medium placeholder:text-gray-400"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#ad207d] focus:ring-2 focus:ring-pink-500/10 outline-none transition-all font-hand text-lg text-gray-600 placeholder:font-sans placeholder:text-sm placeholder:text-gray-400"
                       placeholder="Give some details"
                     />
                   </div>
