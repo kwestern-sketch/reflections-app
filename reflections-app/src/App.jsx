@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves, Lock, ArrowRightCircle, Share2, Maximize2 } from 'lucide-react';
+import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves, Lock, ArrowRightCircle, Share2, Maximize2, Linkedin, Instagram, Copy, Share } from 'lucide-react';
 
 // --- FIREBASE IMPORTS ---
 import { initializeApp } from 'firebase/app';
@@ -745,14 +745,48 @@ const openSlide = (entry) => {
             </>
           )}
 
-          {/* Controls - Visible ONLY in Social Mode */}
+      {/* Social Mode Action Bar (Bottom Overlay) */}
           {socialMode && (
-            <button 
-              onClick={() => setSocialMode(false)}
-              className="absolute bottom-8 right-8 bg-black/50 hover:bg-black/70 text-white px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm transition-all z-50 flex items-center gap-2"
-            >
-              <X size={16} /> Exit Social Mode
-            </button>
+            <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-4 z-50 pointer-events-auto animate-in slide-in-from-bottom-4 fade-in duration-300">
+              
+              {/* EXIT Button */}
+              <button 
+                onClick={() => setSocialMode(false)}
+                className="bg-black/80 hover:bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-2 transition-all hover:scale-105"
+              >
+                <X size={16} /> Exit Mode
+              </button>
+
+              <div className="h-8 w-px bg-gray-400/50 mx-2"></div>
+
+              {/* COPY CAPTION (For Instagram) */}
+              <button 
+                onClick={handleCopyCaption}
+                className="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
+                title="Copy Caption for Instagram"
+              >
+                <Instagram size={16} className="text-pink-600" /> 
+                <span className="hidden sm:inline">Copy Caption</span>
+              </button>
+
+              {/* LINKEDIN */}
+              <button 
+                onClick={handleLinkedInShare}
+                className="bg-[#0077b5] hover:bg-[#006097] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
+              >
+                <Linkedin size={16} /> 
+                <span className="hidden sm:inline">LinkedIn</span>
+              </button>
+
+              {/* NATIVE SHARE (Mobile) */}
+              <button 
+                onClick={handleNativeShare}
+                className="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105 sm:hidden"
+              >
+                <Share size={16} />
+              </button>
+
+            </div>
           )}
 
           <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row slide-up transition-all duration-500 ${socialMode ? 'max-w-6xl h-auto my-auto shadow-none border-2 border-[#ad207d]/10' : 'max-w-5xl max-h-full h-full md:h-auto'}`}>
