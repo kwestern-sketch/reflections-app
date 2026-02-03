@@ -781,7 +781,7 @@ const openSlide = (entry) => {
                 onClick={() => setSocialMode(false)}
                 className="bg-black/80 hover:bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-2 transition-all hover:scale-105"
               >
-                <X size={16} /> Exit Mode
+                <X size={16} /> Exit Socials Page
               </button>
 
               <div className="h-8 w-px bg-gray-400/50 mx-2"></div>
@@ -790,10 +790,10 @@ const openSlide = (entry) => {
               <button 
                 onClick={handleCopyCaption}
                 className="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
-                title="Copy Caption for Instagram"
+                title="Copy Caption for Social Post"
               >
                 <Instagram size={16} className="text-pink-600" /> 
-                <span className="hidden sm:inline">Copy Caption</span>
+                <span className="hidden sm:inline">Copy Text for Socials</span>
               </button>
 
               {/* LINKEDIN */}
