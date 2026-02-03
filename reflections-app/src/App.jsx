@@ -8,6 +8,7 @@ import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } 
 
 // --- CONFIGURATION ---
 const SITE_PASSWORD = "brit2026"; // Shared passcode
+const AUTO_SCROLL_DURATION = 10000; // 10 seconds
 
 // --- FIREBASE SETUP ---
 let firebaseApp, auth, db, appId;
