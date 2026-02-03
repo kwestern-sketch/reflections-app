@@ -486,7 +486,7 @@ export default function App() {
                  <div className="space-y-2 pt-2">
                     <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
                       <Type size={16} className="text-[#ad207d]" />
-                      Activity Headline: What did you do? (One-liner)
+                      Activity Headline: What did you do? (Give some details)
                     </label>
                     <input 
                       type="text"
