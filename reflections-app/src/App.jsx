@@ -772,16 +772,16 @@ const openSlide = (entry) => {
             </>
           )}
 
-{/* Social Mode Action Bar (Bottom Overlay) */}
+{/* Social Mode Action Bar (Moved Below) */}
           {socialMode && (
-            <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-4 z-50 pointer-events-auto animate-in slide-in-from-bottom-4 fade-in duration-300">
+            <div className="mt-8 flex justify-center items-center gap-4 z-50 pointer-events-auto animate-in slide-in-from-bottom-4 fade-in duration-300">
               
               {/* EXIT Button */}
               <button 
                 onClick={() => setSocialMode(false)}
                 className="bg-black/80 hover:bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-2 transition-all hover:scale-105"
               >
-                <X size={16} /> Exit Socials Page
+                <X size={16} /> Exit
               </button>
 
               <div className="h-8 w-px bg-gray-400/50 mx-2"></div>
@@ -790,7 +790,7 @@ const openSlide = (entry) => {
               <button 
                 onClick={handleCopyCaption}
                 className="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
-                title="Copy Caption for Social Post"
+                title="Copy Caption for Instagram"
               >
                 <Instagram size={16} className="text-pink-600" /> 
                 <span className="hidden sm:inline">Copy Text for Socials</span>
@@ -802,7 +802,7 @@ const openSlide = (entry) => {
                 className="bg-[#0077b5] hover:bg-[#006097] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
               >
                 <Linkedin size={16} /> 
-                <span className="hidden sm:inline">LinkedIn</span>
+                <span className="hidden sm:inline"></span>
               </button>
 
               {/* NATIVE SHARE (Mobile) */}
