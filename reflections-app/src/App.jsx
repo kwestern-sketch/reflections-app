@@ -529,7 +529,7 @@ export default function App() {
                       value={formData.takeaway}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#ad207d] focus:ring-2 focus:ring-pink-500/10 outline-none transition-all font-hand text-lg text-gray-600 placeholder:font-sans placeholder:text-sm placeholder:text-gray-400"
-                      placeholder="Was there a ligtbulb moment that shifted your thinking?"
+                      placeholder="Was there a lightbulb moment that shifted your thinking?"
                     />
                   </div>
 
