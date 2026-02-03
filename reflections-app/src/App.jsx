@@ -133,7 +133,7 @@ const DEPARTMENTS = [
 ];
 
 // Demo data as fallback
-const DEMO_ENTRIES = [
+/*const DEMO_ENTRIES = [
   {
     id: 1,
     name: "Sarah Jenkins",
@@ -159,9 +159,7 @@ const DEMO_ENTRIES = [
     date: "Feb 6, 2026"
   },
 
-
-
-];
+];*/
 
 export default function App() {
   const [isPasscodeVerified, setIsPasscodeVerified] = useState(false);
