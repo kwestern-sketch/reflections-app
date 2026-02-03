@@ -815,8 +815,10 @@ const openSlide = (entry) => {
                     <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
                       <Zap size={18} /> Purpose
                     </h4>
+                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
                     <p className="text-lg text-gray-700 font-hand leading-relaxed">{selectedEntry.reason}</p>
                   </div>
+                    </div>
                 )}
 
                 
