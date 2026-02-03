@@ -448,7 +448,7 @@ export default function App() {
     
     {/* 2. Mobile Version (Visible ONLY on small screens) */}
     <span className="sm:hidden font-hand font-bold text-[#ad207d]">
-      2026
+     
     </span>
             </div>
           </div>
