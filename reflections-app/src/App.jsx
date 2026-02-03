@@ -756,7 +756,7 @@ const openSlide = (entry) => {
       {/* MODAL */}
       {/* FULL SCREEN SLIDE MODAL */}
       {selectedEntry && (
-        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-gray-900/60 backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-0' : 'p-4 sm:p-8'}`}>
+        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-gray-900/60 backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-0 flex-col' : 'p-4 sm:p-8'}`}>
           {/* Controls - Hidden in Social Mode */}
           {!socialMode && (
             <>
@@ -772,53 +772,22 @@ const openSlide = (entry) => {
             </>
           )}
 
- {/* Social Mode Action Bar (Moved Below) */}
+          {/* Controls - Visible ONLY in Social Mode (Arrows for navigation) */}
           {socialMode && (
-            <div className="mt-8 flex justify-center items-center gap-4 z-50 pointer-events-auto animate-in slide-in-from-bottom-4 fade-in duration-300 w-full max-w-xl">
-              
-              {/* EXIT Button */}
-              <button 
-                onClick={() => setSocialMode(false)}
-                className="bg-black/80 hover:bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-2 transition-all hover:scale-105"
-              >
-                <X size={16} /> Exit
+            <>
+              <button onClick={prevSlide} className="fixed left-2 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/80 hover:bg-white text-gray-500 hover:text-[#ad207d] shadow-lg transition-all">
+                <ChevronLeft size={32} />
               </button>
-
-              <div className="h-8 w-px bg-gray-400/50 mx-2"></div>
-
-              {/* COPY CAPTION (For Instagram) */}
-              <button 
-                onClick={handleCopyCaption}
-                className="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
-                title="Copy Text for Socials"
-              >
-                <Instagram size={16} className="text-pink-600" /> 
-                <span className="hidden sm:inline">Caption</span>
+              <button onClick={nextSlide} className="fixed right-2 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/80 hover:bg-white text-gray-500 hover:text-[#ad207d] shadow-lg transition-all">
+                <ChevronRight size={32} />
               </button>
-
-              {/* LINKEDIN */}
-              <button 
-                onClick={handleLinkedInShare}
-                className="bg-[#0077b5] hover:bg-[#006097] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
-              >
-                <Linkedin size={16} /> 
-                <span className="hidden sm:inline">LinkedIn</span>
-              </button>
-
-              {/* NATIVE SHARE (Mobile) */}
-              <button 
-                onClick={handleNativeShare}
-                className="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105 sm:hidden"
-              >
-                <Share size={16} />
-              </button>
-            </div>
+            </>
           )}
 
-          <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row slide-up transition-all duration-500 ${socialMode ? 'max-w-6xl h-auto my-auto shadow-none border-2 border-[#ad207d]/10' : 'max-w-5xl max-h-full h-full md:h-auto'}`}>
+          <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col slide-up transition-all duration-500 ${socialMode ? 'max-w-xl my-auto shadow-xl border border-gray-200' : 'max-w-5xl md:flex-row max-h-full h-full md:h-auto'}`}>
             
-            {/* Left: Image */}
-            <div className={`bg-black relative shrink-0 ${socialMode ? 'md:w-1/2 h-[500px]' : 'md:w-5/12 h-64 md:h-auto'}`}>
+            {/* Left: Image (Vertical in Social Mode) */}
+            <div className={`bg-black relative shrink-0 ${socialMode ? 'w-full h-80' : 'md:w-5/12 h-64 md:h-auto'}`}>
               <img 
                 src={selectedEntry.image || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"} 
                 alt="Detail" 
@@ -834,8 +803,8 @@ const openSlide = (entry) => {
               )}
             </div>
             
-            {/* Right: Content */}
-            <div className={`bg-white overflow-y-auto ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
+            {/* Right: Content (Vertical in Social Mode) */}
+            <div className={`bg-white overflow-y-auto ${socialMode ? 'w-full p-8 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
               <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
                 <div className="flex items-center gap-4">
                    {selectedEntry.avatar ? (
@@ -849,7 +818,7 @@ const openSlide = (entry) => {
                     <h3 className="font-extrabold text-gray-900 text-2xl">{selectedEntry.name}</h3>
                     <div className="flex items-center gap-2 text-sm text-gray-500 mt-1 font-medium">
                       <span className="bg-pink-50 text-[#ad207d] px-2 py-0.5 rounded">{selectedEntry.department}</span>
-                      {socialMode && <span className="text-[#ad207d] font-bold">• BRIT Staff Development Day 2026</span>}
+                      {socialMode && <span className="text-[#ad207d] font-bold">• Reflections 2026</span>}
                       {!socialMode && <><span>•</span><span>{selectedEntry.date}</span></>}
                     </div>
                   </div>
@@ -875,7 +844,7 @@ const openSlide = (entry) => {
                 {!socialMode && (
                   <div className="space-y-2">
                     <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                      <Zap size={18} /> 
+                      <Zap size={18} /> The Spark
                     </h4>
                     <p className="text-lg text-gray-700 leading-relaxed">{selectedEntry.reason}</p>
                   </div>
@@ -883,7 +852,7 @@ const openSlide = (entry) => {
 
                 <div className="space-y-3">
                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Lightbulb size={18} /> 
+                    <Lightbulb size={18} /> The Lightbulb
                   </h4>
                   <div className="bg-pink-50/80 p-6 rounded-xl border border-yellow-100 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.takeaway}</p>
@@ -892,7 +861,7 @@ const openSlide = (entry) => {
 
                 <div className="space-y-3">
                   <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Waves size={18} /> 
+                    <Waves size={18} /> The Ripple Effect
                   </h4>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.impact}</p>
@@ -906,6 +875,49 @@ const openSlide = (entry) => {
                   <span>VERIFIED SUBMISSION</span>
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Social Mode Action Bar (Moved Below) */}
+          {socialMode && (
+            <div className="mt-8 flex justify-center items-center gap-4 z-50 pointer-events-auto animate-in slide-in-from-bottom-4 fade-in duration-300 w-full max-w-xl">
+              
+              {/* EXIT Button */}
+              <button 
+                onClick={() => setSocialMode(false)}
+                className="bg-black/80 hover:bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold backdrop-blur-md shadow-lg flex items-center gap-2 transition-all hover:scale-105"
+              >
+                <X size={16} /> Exit Mode
+              </button>
+
+              <div className="h-8 w-px bg-gray-400/50 mx-2"></div>
+
+              {/* COPY CAPTION (For Instagram) */}
+              <button 
+                onClick={handleCopyCaption}
+                className="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
+                title="Copy Caption for Instagram"
+              >
+                <Instagram size={16} className="text-pink-600" /> 
+                <span className="hidden sm:inline">Caption</span>
+              </button>
+
+              {/* LINKEDIN */}
+              <button 
+                onClick={handleLinkedInShare}
+                className="bg-[#0077b5] hover:bg-[#006097] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
+              >
+                <Linkedin size={16} /> 
+                <span className="hidden sm:inline">LinkedIn</span>
+              </button>
+
+              {/* NATIVE SHARE (Mobile) */}
+              <button 
+                onClick={handleNativeShare}
+                className="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105 sm:hidden"
+              >
+                <Share size={16} />
+              </button>
             </div>
           </div>
         </div>
