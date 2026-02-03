@@ -819,9 +819,9 @@ const openSlide = (entry) => {
                     <p className="text-lg text-gray-700 font-hand leading-relaxed">{selectedEntry.reason}</p>
                   </div>
                     </div>
-                
+                )}
 
-                
+                 {!socialMode && (
                 <div className="space-y-3">
         
                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
@@ -831,8 +831,8 @@ const openSlide = (entry) => {
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.takeaway}</p>
                   </div>
                 </div>
-                
-
+                )}
+{!socialMode && (
                 <div className="space-y-3">
                  
                   <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
