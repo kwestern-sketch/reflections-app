@@ -7,7 +7,7 @@ import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken }
 import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from 'firebase/firestore';
 
 // --- CONFIGURATION ---
-const SITE_PASSWORD = "brit"; // Shared passcode
+const SITE_PASSWORD = "brit2026"; // Shared passcode
 
 // --- FIREBASE SETUP ---
 let firebaseApp, auth, db, appId;
