@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves, Lock, ArrowRightCircle } from 'lucide-react';
+import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves, Lock, ArrowRightCircle, Share2, Maximize2 } from 'lucide-react';
 
 // --- FIREBASE IMPORTS ---
 import { initializeApp } from 'firebase/app';
@@ -167,6 +167,7 @@ export default function App() {
   const [isPasscodeVerified, setIsPasscodeVerified] = useState(false);
   const [view, setView] = useState('gallery');
   const [sortBy, setSortBy] = useState('latest');
+  const [socialMode, setSocialMode] = useState(false);
   const [entries, setEntries] = useState(DEMO_ENTRIES);
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [user, setUser] = useState(null);
@@ -342,8 +343,15 @@ export default function App() {
 
   // --- VIEW LOGIC ---
 
-  const openSlide = (entry) => setSelectedEntry(entry);
-  const closeSlide = () => setSelectedEntry(null);
+const openSlide = (entry) => {
+    setSocialMode(false); 
+    setSelectedEntry(entry);
+  };
+  
+  const closeSlide = () => {
+    setSocialMode(false); 
+    setSelectedEntry(null);
+  };
 
   const nextSlide = (e) => {
     if(e) e.stopPropagation();
@@ -436,7 +444,7 @@ export default function App() {
       `}</style>
 
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
+      <header className={`bg-white border-b border-gray-200 sticky top-0 z-40 transition-all duration-500 ${socialMode ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setView('gallery')}>
             <BritTLLogo size="sm" />
@@ -472,7 +480,7 @@ export default function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-10">
+      <main className={`max-w-6xl mx-auto px-4 py-10 transition-opacity duration-500 ${socialMode ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         
         {/* VIEW: FORM */}
         {view === 'form' && (
@@ -719,51 +727,84 @@ export default function App() {
       </main>
 
       {/* MODAL */}
+      {/* FULL SCREEN SLIDE MODAL */}
       {selectedEntry && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-gray-900/60 backdrop-blur-sm fade-in">
-          <button onClick={closeSlide} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50">
-            <X size={32} />
-          </button>
-          
-          <button onClick={prevSlide} className="absolute left-2 sm:left-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
-            <ChevronLeft size={48} />
-          </button>
-          
-          <button onClick={nextSlide} className="absolute right-2 sm:right-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
-            <ChevronRight size={48} />
-          </button>
+        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-gray-900/60 backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-0' : 'p-4 sm:p-8'}`}>
+          {/* Controls - Hidden in Social Mode */}
+          {!socialMode && (
+            <>
+              <button onClick={closeSlide} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50">
+                <X size={32} />
+              </button>
+              <button onClick={prevSlide} className="absolute left-2 sm:left-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
+                <ChevronLeft size={48} />
+              </button>
+              <button onClick={nextSlide} className="absolute right-2 sm:right-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
+                <ChevronRight size={48} />
+              </button>
+            </>
+          )}
 
-          <div className="bg-white w-full max-w-5xl max-h-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row h-full md:h-auto slide-up">
-            <div className="md:w-5/12 bg-black h-64 md:h-auto relative shrink-0">
+          {/* Controls - Visible ONLY in Social Mode */}
+          {socialMode && (
+            <button 
+              onClick={() => setSocialMode(false)}
+              className="absolute bottom-8 right-8 bg-black/50 hover:bg-black/70 text-white px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm transition-all z-50 flex items-center gap-2"
+            >
+              <X size={16} /> Exit Social Mode
+            </button>
+          )}
+
+          <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row slide-up transition-all duration-500 ${socialMode ? 'max-w-6xl h-auto my-auto shadow-none border-2 border-[#ad207d]/10' : 'max-w-5xl max-h-full h-full md:h-auto'}`}>
+            
+            {/* Left: Image */}
+            <div className={`bg-black relative shrink-0 ${socialMode ? 'md:w-1/2 h-[500px]' : 'md:w-5/12 h-64 md:h-auto'}`}>
               <img 
                 src={selectedEntry.image || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"} 
                 alt="Detail" 
                 className="absolute inset-0 w-full h-full object-contain" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden"></div>
-              <div className="absolute bottom-4 left-4 text-white md:hidden">
-                <h3 className="font-bold text-xl">{selectedEntry.name}</h3>
-                <p className="opacity-90">{selectedEntry.department}</p>
-              </div>
-            </div>
-            
-            <div className="md:w-7/12 p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-[85vh] bg-white">
-              <div className="hidden md:flex items-center gap-4 mb-8 border-b border-gray-100 pb-6">
-                 {selectedEntry.avatar ? (
-                   <img src={selectedEntry.avatar} alt={selectedEntry.name} className="w-16 h-16 rounded-full object-cover border-4 border-gray-50 shadow-md" />
-                 ) : (
-                   <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm border-4 border-gray-50">
-                     <User size={32} />
-                   </div>
-                 )}
-                <div>
-                  <h3 className="font-extrabold text-gray-900 text-2xl">{selectedEntry.name}</h3>
-                  <div className="flex items-center gap-2 text-sm text-gray-500 mt-1 font-medium">
-                    <span className="bg-pink-50 text-[#ad207d] px-2 py-0.5 rounded">{selectedEntry.department}</span>
-                    <span>•</span>
-                    <span>{selectedEntry.date}</span>
+              {!socialMode && (
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h3 className="font-bold text-xl">{selectedEntry.name}</h3>
+                    <p className="opacity-90">{selectedEntry.department}</p>
                   </div>
                 </div>
+              )}
+            </div>
+            
+            {/* Right: Content */}
+            <div className={`bg-white overflow-y-auto ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
+              <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
+                <div className="flex items-center gap-4">
+                   {selectedEntry.avatar ? (
+                     <img src={selectedEntry.avatar} alt={selectedEntry.name} className="w-16 h-16 rounded-full object-cover border-4 border-gray-50 shadow-md" />
+                   ) : (
+                     <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm border-4 border-gray-50">
+                       <User size={32} />
+                     </div>
+                   )}
+                  <div>
+                    <h3 className="font-extrabold text-gray-900 text-2xl">{selectedEntry.name}</h3>
+                    <div className="flex items-center gap-2 text-sm text-gray-500 mt-1 font-medium">
+                      <span className="bg-pink-50 text-[#ad207d] px-2 py-0.5 rounded">{selectedEntry.department}</span>
+                      {socialMode && <span className="text-[#ad207d] font-bold">• Reflections 2026</span>}
+                      {!socialMode && <><span>•</span><span>{selectedEntry.date}</span></>}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Social Toggle Button */}
+                {!socialMode && (
+                  <button 
+                    onClick={() => setSocialMode(true)}
+                    className="p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-[#ad207d] transition-colors"
+                    title="Enter Social/Screenshot Mode"
+                  >
+                    <Share2 size={20} />
+                  </button>
+                )}
               </div>
               
               <div className="mb-8">
@@ -771,16 +812,18 @@ export default function App() {
               </div>
 
               <div className="space-y-10">
-                <div className="space-y-2">
-                  <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                    <Zap size={18} /> 
-                  </h4>
-                  <p className="text-lg text-gray-700 leading-relaxed">{selectedEntry.reason}</p>
-                </div>
+                {!socialMode && (
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                      <Zap size={18} /> The Spark
+                    </h4>
+                    <p className="text-lg text-gray-700 leading-relaxed">{selectedEntry.reason}</p>
+                  </div>
+                )}
 
                 <div className="space-y-3">
                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Lightbulb size={18} /> 
+                    <Lightbulb size={18} /> The Lightbulb
                   </h4>
                   <div className="bg-pink-50/80 p-6 rounded-xl border border-yellow-100 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.takeaway}</p>
@@ -789,7 +832,7 @@ export default function App() {
 
                 <div className="space-y-3">
                   <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Waves size={18} /> 
+                    <Waves size={18} /> The Ripple Effect
                   </h4>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.impact}</p>
@@ -797,10 +840,12 @@ export default function App() {
                 </div>
               </div>
               
-              <div className="mt-12 pt-6 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400 font-mono">
-                <span>ID: {selectedEntry.id}</span>
-                <span>VERIFIED SUBMISSION</span>
-              </div>
+              {!socialMode && (
+                <div className="mt-12 pt-6 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400 font-mono">
+                  <span>ID: {selectedEntry.id}</span>
+                  <span>VERIFIED SUBMISSION</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
