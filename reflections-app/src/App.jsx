@@ -819,7 +819,7 @@ const openSlide = (entry) => {
                     <p className="text-lg text-gray-700 font-hand leading-relaxed">{selectedEntry.reason}</p>
                   </div>
                     </div>
-                )}
+                
 
                 
                 <div className="space-y-3">
@@ -843,7 +843,7 @@ const openSlide = (entry) => {
                   </div>
                   
                 </div>
-
+)}
               </div>
           
               
