@@ -772,9 +772,9 @@ const openSlide = (entry) => {
             </>
           )}
 
-{/* Social Mode Action Bar (Moved Below) */}
+ {/* Social Mode Action Bar (Moved Below) */}
           {socialMode && (
-            <div className="mt-8 flex justify-center items-center gap-4 z-50 pointer-events-auto animate-in slide-in-from-bottom-4 fade-in duration-300">
+            <div className="mt-8 flex justify-center items-center gap-4 z-50 pointer-events-auto animate-in slide-in-from-bottom-4 fade-in duration-300 w-full max-w-xl">
               
               {/* EXIT Button */}
               <button 
@@ -790,10 +790,10 @@ const openSlide = (entry) => {
               <button 
                 onClick={handleCopyCaption}
                 className="bg-white hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
-                title="Copy Caption for Instagram"
+                title="Copy Text for Socials"
               >
                 <Instagram size={16} className="text-pink-600" /> 
-                <span className="hidden sm:inline">Copy Text for Socials</span>
+                <span className="hidden sm:inline">Caption</span>
               </button>
 
               {/* LINKEDIN */}
@@ -802,7 +802,7 @@ const openSlide = (entry) => {
                 className="bg-[#0077b5] hover:bg-[#006097] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 transition-all hover:scale-105"
               >
                 <Linkedin size={16} /> 
-                <span className="hidden sm:inline"></span>
+                <span className="hidden sm:inline">LinkedIn</span>
               </button>
 
               {/* NATIVE SHARE (Mobile) */}
@@ -812,7 +812,6 @@ const openSlide = (entry) => {
               >
                 <Share size={16} />
               </button>
-
             </div>
           )}
 
