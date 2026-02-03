@@ -817,7 +817,7 @@ const openSlide = (entry) => {
                     </h4>
                     <p className="text-lg text-gray-700 font-hand leading-relaxed">{selectedEntry.reason}</p>
                   </div>
-                
+                )}
 
                 
                 <div className="space-y-3">
@@ -843,7 +843,7 @@ const openSlide = (entry) => {
                 </div>
 
               </div>
-          )}
+          
               
               {!socialMode && (
                 <div className="mt-12 pt-6 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400 font-mono">
