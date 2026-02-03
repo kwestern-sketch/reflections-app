@@ -95,42 +95,9 @@ const DEMO_ENTRIES = [
     impact: "Rewriting the Year 10 friction lab. They will design the risk assessment before they even see a Bunsen burner.",
     date: "Feb 6, 2026"
   },
-  {
-    id: 3,
-    name: "Elena Rodriguez",
-    department: "Student Services",
-    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=1000",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150",
-    headline: "Revamping the morning triage system for urgent pastoral care.",
-    reason: "We were seeing a bottleneck at 8:45am. Students in distress were waiting too long to be seen, elevating anxiety.",
-    takeaway: "Triage isn't about solving the problem instantly; it's about validating the feeling immediately.",
-    impact: "Implementing a 'red/amber/green' visual check-in card system for the waiting room to prioritise urgent needs silently.",
-    date: "Feb 10, 2026"
-  },
-  {
-    id: 4,
-    name: "Marcus Chen",
-    department: "Dance",
-    image: "https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?auto=format&fit=crop&q=80&w=1000",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150",
-    headline: "Experimenting with video-delay feedback in technique class.",
-    reason: "Students struggle to feel the difference between a neutral pelvis and an anterior tilt. Mirrors can be deceptive.",
-    takeaway: "Visual feedback needs to be immediate (within 10 seconds) to connect with the kinesthetic sensation.",
-    impact: "Setting up a permanent iPad station with a 30-second delay loop for self-correction during corner work.",
-    date: "Feb 14, 2026"
-  },
-  {
-    id: 5,
-    name: "Chloe Al-Fayed",
-    department: "Digital Arts",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1000",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150",
-    headline: "Introducing 'Silent Crits' for concept art reviews.",
-    reason: "Verbal feedback was dominated by the loudest voices. Introverted students had great insights but stayed quiet.",
-    takeaway: "When you remove the performance of speaking, the analysis becomes deeper and more specific.",
-    impact: "Using FigJam for all initial critique rounds. Students post sticky notes anonymously before we open the floor for discussion.",
-    date: "Feb 18, 2026"
-  }
+
+
+
 ];
 
 export default function App() {
@@ -718,14 +685,14 @@ export default function App() {
               <div className="space-y-10">
                 <div className="space-y-2">
                   <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                    <Zap size={18} /> The Spark
+                    <Zap size={18} /> 
                   </h4>
                   <p className="text-lg text-gray-700 leading-relaxed">{selectedEntry.reason}</p>
                 </div>
 
                 <div className="space-y-3">
                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Lightbulb size={18} /> The Lightbulb
+                    <Lightbulb size={18} /> 
                   </h4>
                   <div className="bg-pink-50/80 p-6 rounded-xl border border-yellow-100 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.takeaway}</p>
@@ -734,7 +701,7 @@ export default function App() {
 
                 <div className="space-y-3">
                   <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Waves size={18} /> The Ripple Effect
+                    <Waves size={18} /> 
                   </h4>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.impact}</p>
