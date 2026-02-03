@@ -811,11 +811,11 @@ const openSlide = (entry) => {
 
               <div className="space-y-10">
                 {!socialMode && (
-                  <div className="space-y-2">
-                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                  <div className="space-y-3">
+                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
                       <Zap size={18} /> Purpose
                     </h4>
-                    <p className="text-lg text-gray-700 leading-relaxed">{selectedEntry.reason}</p>
+                    <p className="text-lg text-gray-700 font-hand leading-relaxed">{selectedEntry.reason}</p>
                   </div>
                 )}
 
