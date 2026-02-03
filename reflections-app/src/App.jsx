@@ -133,8 +133,8 @@ const DEPARTMENTS = [
 ];
 
 // Demo data as fallback
-/*const DEMO_ENTRIES = [
-  {
+const DEMO_ENTRIES = [
+  /*{
     id: 1,
     name: "Sarah Jenkins",
     department: "Humanities",
@@ -157,9 +157,9 @@ const DEPARTMENTS = [
     takeaway: "Ownership creates safety. When students predict the risk, they respect the hazard.",
     impact: "Rewriting the Year 10 friction lab. They will design the risk assessment before they even see a Bunsen burner.",
     date: "Feb 6, 2026"
-  },
+  },*/
 
-];*/
+];
 
 export default function App() {
   const [isPasscodeVerified, setIsPasscodeVerified] = useState(false);
