@@ -117,7 +117,7 @@ const PasscodeScreen = ({ onVerify }) => {
         )}
         
         <p className="text-xs text-slate-400 pt-4 border-t border-slate-50">
-          Development Day Reflections 2026
+          BRIT Professional Development
         </p>
       </div>
     </div>
@@ -449,7 +449,7 @@ const openSlide = (entry) => {
            <div className="flex items-baseline gap-1 text-lg sm:text-xl">
              {/* 1. Desktop Version (Hidden on small screens) */}
     <span className="hidden sm:inline font-hand font-bold text-gray-800 tracking-tight">
-      Development Day <span className="text-[#ad207d]">Reflections 2026</span>
+      BRIT CPD<span className="text-[#ad207d]">Reflections</span>
     </span>
     
     {/* 2. Mobile Version (Visible ONLY on small screens) */}
@@ -674,7 +674,7 @@ const openSlide = (entry) => {
               
               <div className="space-y-2 max-w-3xl">
                 <h2 className="text-4xl sm:text-5xl font-hand font-bold text-gray-900 leading-tight">
-                  Development Day Gallery
+                  BRIT Professional Development Gallery
                 </h2>
                 <p className="text-gray-500 text-lg font-normal pt-2">
                   Have a browse and add your own <span className="font-hand text-[#ad207d]">reflection</span>.
@@ -787,7 +787,7 @@ const openSlide = (entry) => {
                     <h3 className="font-extrabold text-gray-900 text-2xl">{selectedEntry.name}</h3>
                     <div className="flex items-center gap-2 text-sm text-gray-500 mt-1 font-medium">
                       <span className="bg-pink-50 text-[#ad207d] px-2 py-0.5 rounded">{selectedEntry.department}</span>
-                      {socialMode && <span className="text-[#ad207d] font-bold">• BRIT Staff Development Day 2026</span>}
+                      {socialMode && <span className="text-[#ad207d] font-bold">• BRIT Staff CPD</span>}
                       {!socialMode && <><span>•</span><span>{selectedEntry.date}</span></>}
                     </div>
                   </div>
@@ -813,7 +813,7 @@ const openSlide = (entry) => {
                 {!socialMode && (
                   <div className="space-y-2">
                     <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                      <Zap size={18} /> 
+                      <Zap size={18} /> Purpose
                     </h4>
                     <p className="text-lg text-gray-700 leading-relaxed">{selectedEntry.reason}</p>
                   </div>
@@ -821,7 +821,7 @@ const openSlide = (entry) => {
 
                 <div className="space-y-3">
                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Lightbulb size={18} /> 
+                    <Lightbulb size={18} /> Key Takeaway
                   </h4>
                   <div className="bg-pink-50/80 p-6 rounded-xl border border-yellow-100 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.takeaway}</p>
@@ -830,7 +830,7 @@ const openSlide = (entry) => {
 
                 <div className="space-y-3">
                   <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Waves size={18} /> 
+                    <Waves size={18} /> Future Impact
                   </h4>
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
                      <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.impact}</p>
