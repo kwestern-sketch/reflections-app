@@ -746,15 +746,44 @@ const openSlide = (entry) => {
 
   
 
-          {/* Controls - Visible ONLY in Social Mode */}
-          {socialMode && (
-            <button 
-              onClick={() => setSocialMode(false)}
-              className="absolute bottom-8 right-8 bg-black/50 hover:bg-black/70 text-white px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm transition-all z-50 flex items-center gap-2"
-            >
-              <X size={16} /> Exit Social Mode
-            </button>
-          )}
+       {/* Controls - Visible ONLY in Social Mode */}
+{socialMode && (
+  <div className="fixed bottom-10 left-0 right-0 z-[100] flex justify-center items-center gap-4 px-4 pointer-events-none">
+    <div className="flex items-center gap-2 bg-black/80 backdrop-blur-md p-2 rounded-full shadow-2xl border border-white/20 pointer-events-auto">
+      
+      {/* Previous Button */}
+      <button 
+        onClick={prevSlide}
+        className="p-3 text-white hover:bg-white/10 rounded-full transition-all"
+        title="Previous"
+      >
+        <ChevronLeft size={24} />
+      </button>
+
+      <div className="h-6 w-[1px] bg-white/20 mx-1" />
+
+      {/* Exit Button */}
+      <button 
+        onClick={() => setSocialMode(false)}
+        className="px-6 py-2 bg-white text-black rounded-full text-sm font-bold hover:bg-gray-200 transition-all flex items-center gap-2"
+      >
+        <X size={18} /> Exit Social Mode
+      </button>
+
+      <div className="h-6 w-[1px] bg-white/20 mx-1" />
+
+      {/* Next Button */}
+      <button 
+        onClick={nextSlide}
+        className="p-3 text-white hover:bg-white/10 rounded-full transition-all"
+        title="Next"
+      >
+        <ChevronRight size={24} />
+      </button>
+      
+    </div>
+  </div>
+)}
 
           <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row slide-up transition-all duration-500 ${socialMode ? 'max-w-6xl h-auto my-auto shadow-none border-2 border-[#ad207d]/10' : 'max-w-5xl max-h-full h-full md:h-auto'}`}>
             
@@ -861,112 +890,7 @@ const openSlide = (entry) => {
         </div>
       )}
 
-          <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row slide-up transition-all duration-500 ${socialMode ? 'max-w-6xl h-auto my-auto shadow-none border-2 border-[#ad207d]/10' : 'max-w-5xl max-h-full h-full md:h-auto'}`}>
-            
-            {/* Left: Image */}
-            <div className={`bg-black relative shrink-0 ${socialMode ? 'md:w-1/2 h-[500px]' : 'md:w-5/12 h-64 md:h-auto'}`}>
-              <img 
-                key={selectedEntry.id}
-                src={selectedEntry.image || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"} 
-                alt="Detail" 
-                className="absolute inset-0 w-full h-full object-contain fade-in" 
-                alt="Detail"
-              />
-              {!socialMode && (
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="font-bold text-xl">{selectedEntry.name}</h3>
-                    <p className="opacity-90">{selectedEntry.department}</p>
-                  </div>
-                </div>
-              )}
-            </div>
-            
-            {/* Right: Content */}
-            <div className={`bg-white overflow-y-auto ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
-              <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
-                <div className="flex items-center gap-4">
-                   {selectedEntry.avatar ? (
-                     <img src={selectedEntry.avatar} alt={selectedEntry.name} className="w-16 h-16 rounded-full object-cover border-4 border-gray-50 shadow-md" />
-                   ) : (
-                     <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm border-4 border-gray-50">
-                       <User size={32} />
-                     </div>
-                   )}
-                  <div>
-                    <h3 className="font-extrabold text-gray-900 text-2xl">{selectedEntry.name}</h3>
-                    <div className="flex items-center gap-2 text-sm text-gray-500 mt-1 font-medium">
-                      <span className="bg-pink-50 text-[#ad207d] px-2 py-0.5 rounded">{selectedEntry.department}</span>
-                      {socialMode && <span className="text-[#ad207d] font-bold">• BRIT Staff CPD</span>}
-                      {!socialMode && <><span>•</span><span>{selectedEntry.date}</span></>}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Social Toggle Button */}
-                {!socialMode && (
-                  <button 
-                    onClick={() => setSocialMode(true)}
-                    className="p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-[#ad207d] transition-colors"
-                    title="Enter Social/Screenshot Mode"
-                  >
-                    <Share2 size={20} />
-                  </button>
-                )}
-              </div>
-              
-              <div className="mb-8">
-                 <h2 className="text-xl font-hand font-bold text-[#ad207d] leading-snug overflow-visible">"{selectedEntry.headline || selectedEntry.reason}"</h2>
-              </div>
-
-              <div className="space-y-10">
-                {!socialMode && (
-                  <div className="space-y-3">
-                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                      <Zap size={18} /> Purpose
-                    </h4>
-                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
-                    <p className="text-lg text-gray-700 font-hand leading-relaxed">{selectedEntry.reason}</p>
-                  </div>
-                    </div>
-                )}
-
-                 {!socialMode && (
-                <div className="space-y-3">
         
-                   <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Lightbulb size={18} /> Key Takeaway
-                  </h4>
-                  <div className="bg-pink-50/80 p-6 rounded-xl border border-yellow-100 relative overflow-hidden">
-                     <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.takeaway}</p>
-                  </div>
-                </div>
-                )}
-{!socialMode && (
-                <div className="space-y-3">
-                 
-                  <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Waves size={18} /> Future Impact
-                  </h4>
-                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
-                     <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.impact}</p>
-                  </div>
-                  
-                </div>
-)}
-              </div>
-          
-              
-              {!socialMode && (
-                <div className="mt-12 pt-6 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400 font-mono">
-                  <span>ID: {selectedEntry.id}</span>
-                  <span>VERIFIED SUBMISSION</span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
