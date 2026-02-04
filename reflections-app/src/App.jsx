@@ -753,7 +753,7 @@ const openSlide = (entry) => {
             </button>
           )}
 
-          <div className={`bg-white w-full rounded-2xl overflow-scroll shadow-2xl flex flex-col md:flex-row slide-up transition-all duration-500 ${socialMode ? 'max-w-6xl h-auto my-auto shadow-none border-2 border-[#ad207d]/10' : 'max-w-5xl max-h-full h-full md:h-auto'}`}>
+          <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row slide-up transition-all duration-500 ${socialMode ? 'max-w-6xl h-auto my-auto shadow-none border-2 border-[#ad207d]/10' : 'max-w-5xl max-h-full h-full md:h-auto'}`}>
             
             {/* Left: Image */}
             <div className={`bg-black relative shrink-0 ${socialMode ? 'md:w-1/2 h-[500px]' : 'md:w-5/12 h-64 md:h-auto'}`}>
@@ -773,7 +773,7 @@ const openSlide = (entry) => {
             </div>
             
             {/* Right: Content */}
-            <div className={`bg-white overflow-y-auto ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
+            <div className={`bg-white overflow-y-scroll ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
               <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
                 <div className="flex items-center gap-4">
                    {selectedEntry.avatar ? (
