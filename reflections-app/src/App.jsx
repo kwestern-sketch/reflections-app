@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves, Lock, ArrowRightCircle, Share2, Maximize2 } from 'lucide-react';
+import { Camera, Plus, X, ChevronLeft, ChevronRight, BookOpen, Award, User, Upload, ArrowRight, Zap, Lightbulb, TrendingUp, Type, Layers, Waves, Lock, ArrowRightCircle, Share2, Maximize2, GalleryThumbnails } from 'lucide-react';
 
 // --- FIREBASE IMPORTS ---
 import { initializeApp } from 'firebase/app';
@@ -767,7 +767,7 @@ const openSlide = (entry) => {
         onClick={() => setSocialMode(false)}
         className="px-6 py-2 bg-white text-black rounded-full text-sm font-bold hover:bg-gray-200 transition-all flex items-center gap-2"
       >
-        <X size={18} /> Exit Social Mode
+        <X size={18} /> Exit Slide View Mode
       </button>
 
       <div className="h-6 w-[1px] bg-white/20 mx-1" />
@@ -830,9 +830,9 @@ const openSlide = (entry) => {
                   <button 
                     onClick={() => setSocialMode(true)}
                     className="p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-[#ad207d] transition-colors"
-                    title="Enter Social/Screenshot Mode"
+                    title="Enter Quick Read Slideshow Mode"
                   >
-                    <Share2 size={20} />
+                    <GalleryThumbnails size={20} />
                   </button>
                 )}
               </div>
