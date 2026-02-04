@@ -724,174 +724,169 @@ const openSlide = (entry) => {
         )}
       </main>
 
-      {/* MODAL */}
-      {/* FULL SCREEN SLIDE MODAL */}
-      {selectedEntry && (
-        <div className={`fixed inset-0 z-50 flex flex-col items-center backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-0 overflow-y-auto' : 'justify-center bg-gray-900/60 p-4 sm:p-8'}`}>
-          
-          {/* Controls - Hidden in Social Mode */}
+     {/* FULL SCREEN SLIDE MODAL */}
+{selectedEntry && (
+  <div className={`fixed inset-0 z-50 flex flex-col items-center backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-0 overflow-y-auto' : 'justify-center bg-gray-900/60 p-4 sm:p-8'}`}>
+    
+    {/* Navigation Controls - Hidden in Social Mode */}
+    {!socialMode && (
+      <>
+        <button onClick={closeSlide} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50">
+          <X size={32} />
+        </button>
+        <button onClick={prevSlide} className="absolute left-2 sm:left-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
+          <ChevronLeft size={48} />
+        </button>
+        <button onClick={nextSlide} className="absolute right-2 sm:right-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
+          <ChevronRight size={48} />
+        </button>
+      </>
+    )}
+
+    {/* Controls - Subtle Social Mode Nav Bar */}
+    {socialMode && (
+      <div className="fixed bottom-10 left-0 right-0 z-[100] flex justify-center items-center px-4 pointer-events-none">
+        <div className="flex items-center gap-3 bg-white/80 backdrop-blur-md p-1.5 rounded-2xl shadow-lg border border-[#ad207d]/10 pointer-events-auto">
+          <button onClick={prevSlide} className="p-2.5 text-gray-500 hover:text-[#ad207d] hover:bg-pink-50 rounded-xl transition-all">
+            <ChevronLeft size={22} />
+          </button>
+          <button 
+            onClick={() => setSocialMode(false)}
+            className="flex items-center gap-2 px-5 py-2 bg-pink-50 text-[#ad207d] rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#ad207d] hover:text-white transition-all border border-[#ad207d]/20"
+          >
+            <X size={14} /> Exit Quick Slide Mode
+          </button>
+          <button onClick={nextSlide} className="p-2.5 text-gray-500 hover:text-[#ad207d] hover:bg-pink-50 rounded-xl transition-all">
+            <ChevronRight size={22} />
+          </button>
+        </div>
+      </div>
+    )}
+
+    {/* THE MAIN CARD CONTAINER */}
+    <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex transition-all duration-500 
+      ${socialMode 
+        ? 'flex-col max-w-[550px] aspect-[4/5] md:aspect-square my-auto shadow-none border-2 border-[#ad207d]/10' 
+        : 'flex-col md:flex-row max-w-5xl max-h-full h-full md:h-auto'
+      }`}>
+      
+      {/* Left/Top: Image Section */}
+      <div className={`bg-black relative shrink-0 transition-all duration-500
+        ${socialMode 
+          ? 'w-full h-1/2' 
+          : 'w-full md:w-5/12 h-64 md:h-auto'
+        }`}>
+        <img 
+          key={selectedEntry.id}
+          src={selectedEntry.image || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"} 
+          alt="Detail" 
+          className="absolute inset-0 w-full h-full object-contain" 
+        />
+        
+        {/* Social Mode Watermark */}
+        {socialMode && (
+          <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 z-10">
+            <span className="text-white text-[10px] font-bold tracking-widest uppercase">Staff Excellence</span>
+          </div>
+        )}
+
+        {/* Normal Mode Mobile Overlay */}
+        {!socialMode && (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden">
+            <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="font-bold text-xl">{selectedEntry.name}</h3>
+              <p className="opacity-90">{selectedEntry.department}</p>
+            </div>
+          </div>
+        )}
+      </div>
+      
+      {/* Right/Bottom: Content Section */}
+      <div className={`bg-white transition-all duration-500
+        ${socialMode 
+          ? 'w-full h-1/2 p-8 flex flex-col justify-center overflow-hidden' 
+          : 'w-full md:w-7/12 p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-[85vh]'
+        }`}>
+        
+        {/* Header: Name & Social Toggle */}
+        <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
+          <div className="flex items-center gap-4">
+            {selectedEntry.avatar ? (
+              <img src={selectedEntry.avatar} alt={selectedEntry.name} className="w-16 h-16 rounded-full object-cover border-4 border-gray-50 shadow-md" />
+            ) : (
+              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm border-4 border-gray-50">
+                <User size={32} />
+              </div>
+            )}
+            <div>
+              <h3 className="font-extrabold text-gray-900 text-2xl">{selectedEntry.name}</h3>
+              <div className="flex items-center gap-2 text-sm text-gray-500 mt-1 font-medium">
+                <span className="bg-pink-50 text-[#ad207d] px-2 py-0.5 rounded">{selectedEntry.department}</span>
+                {socialMode && <span className="text-[#ad207d] font-bold">• BRIT Staff CPD</span>}
+                {!socialMode && <><span>•</span><span>{selectedEntry.date}</span></>}
+              </div>
+            </div>
+          </div>
+
           {!socialMode && (
-            <>
-              <button onClick={closeSlide} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50">
-                <X size={32} />
-              </button>
-              <button onClick={prevSlide} className="absolute left-2 sm:left-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
-                <ChevronLeft size={48} />
-              </button>
-              <button onClick={nextSlide} className="absolute right-2 sm:right-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
-                <ChevronRight size={48} />
-              </button>
-            </>
+            <button 
+              onClick={() => setSocialMode(true)}
+              className="p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-[#ad207d] transition-colors"
+              title="Quick Slide Mode"
+            >
+              <GalleryThumbnails size={20} />
+            </button>
           )}
+        </div>
+        
+        {/* Headline Quote */}
+        <div className={`${socialMode ? 'mb-0' : 'mb-8'}`}>
+          <h2 className="text-xl font-hand font-bold text-[#ad207d] leading-snug">"{selectedEntry.headline || selectedEntry.reason}"</h2>
+        </div>
 
-  
+        {/* Detailed Info (Normal Mode Only) */}
+        {!socialMode && (
+          <div className="space-y-10">
+            {/* Purpose */}
+            <div className="space-y-3">
+              <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
+                <Zap size={18} /> Purpose
+              </h4>
+              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                <p className="text-lg text-gray-700 font-hand leading-relaxed">{selectedEntry.reason}</p>
+              </div>
+            </div>
 
-     {/* Controls - Subtle Social Mode Nav */}
-{socialMode && (
-  <div className="fixed bottom-10 left-0 right-0 z-[100] flex justify-center items-center px-4 pointer-events-none">
-    <div className="flex items-center gap-3 bg-white/80 backdrop-blur-md p-1.5 rounded-2xl shadow-lg border border-[#ad207d]/10 pointer-events-auto">
-      
-      {/* Previous */}
-      <button 
-        onClick={prevSlide}
-        className="p-2.5 text-gray-500 hover:text-[#ad207d] hover:bg-pink-50 rounded-xl transition-all"
-      >
-        <ChevronLeft size={22} />
-      </button>
+            {/* Takeaway */}
+            <div className="space-y-3">
+              <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
+                <Lightbulb size={18} /> Key Takeaway
+              </h4>
+              <div className="bg-pink-50/80 p-6 rounded-xl border border-yellow-100">
+                <p className="text-gray-800 font-hand text-lg leading-relaxed">{selectedEntry.takeaway}</p>
+              </div>
+            </div>
 
-      {/* Exit Button - Styled like your Department badges */}
-      <button 
-        onClick={() => setSocialMode(false)}
-        className="flex items-center gap-2 px-5 py-2 bg-pink-50 text-[#ad207d] rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#ad207d] hover:text-white transition-all border border-[#ad207d]/20"
-      >
-        <X size={14} /> Exit Quick Slide Mode
-      </button>
+            {/* Impact */}
+            <div className="space-y-3">
+              <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
+                <Waves size={18} /> Future Impact
+              </h4>
+              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                <p className="text-gray-800 font-hand text-lg leading-relaxed">{selectedEntry.impact}</p>
+              </div>
+            </div>
 
-      {/* Next */}
-      <button 
-        onClick={nextSlide}
-        className="p-2.5 text-gray-500 hover:text-[#ad207d] hover:bg-pink-50 rounded-xl transition-all"
-      >
-        <ChevronRight size={22} />
-      </button>
-      
+            <div className="mt-12 pt-6 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400 font-mono">
+              <span>ID: {selectedEntry.id}</span>
+              <span>VERIFIED SUBMISSION</span>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   </div>
 )}
-
-          <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col slide-up transition-all duration-500 
-  ${socialMode ? 'max-w-[550px] aspect-[4/5] md:aspect-square my-auto shadow-xl border-2 border-[#ad207d]/10' : 'md:flex-row max-w-5xl max-h-full h-full md:h-auto'}`}>
-            
-            {/* Left: Image */}
-          <div className={`bg-white overflow-y-auto ${socialMode ? 'w-full h-1/2 p-8 flex flex-col justify-center overflow-hidden' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
-              <img 
-                src={selectedEntry.image || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"} 
-                alt="Detail" 
-                className="absolute inset-0 w-full h-full object-contain" 
-              />
-            
-{/* --- ADD THE WATERMARK HERE --- */}
-            {socialMode && (
-    <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 z-10">
-      <span className="text-white text-[10px] font-bold tracking-widest uppercase">Staff Excellence</span>
-    </div>
-  )}
-              {!socialMode && (
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="font-bold text-xl">{selectedEntry.name}</h3>
-                    <p className="opacity-90">{selectedEntry.department}</p>
-                  </div>
-                </div>
-              )}
-            </div>
-            
-            {/* Right: Content */}
-            <div className={`bg-white overflow-y-auto ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
-              <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
-                <div className="flex items-center gap-4">
-                   {selectedEntry.avatar ? (
-                     <img src={selectedEntry.avatar} alt={selectedEntry.name} className="w-16 h-16 rounded-full object-cover border-4 border-gray-50 shadow-md" />
-                   ) : (
-                     <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 shadow-sm border-4 border-gray-50">
-                       <User size={32} />
-                     </div>
-                   )}
-                  <div>
-                    <h3 className="font-extrabold text-gray-900 text-2xl">{selectedEntry.name}</h3>
-                    <div className="flex items-center gap-2 text-sm text-gray-500 mt-1 font-medium">
-                      <span className="bg-pink-50 text-[#ad207d] px-2 py-0.5 rounded">{selectedEntry.department}</span>
-                      {socialMode && <span className="text-[#ad207d] font-bold">• BRIT Staff CPD</span>}
-                      {!socialMode && <><span>•</span><span>{selectedEntry.date}</span></>}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Social Toggle Button */}
-                {!socialMode && (
-                  <button 
-                    onClick={() => setSocialMode(true)}
-                    className="p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-[#ad207d] transition-colors"
-                    title="Enter Quick Read Slideshow Mode"
-                  >
-                    <GalleryThumbnails size={20} />
-                  </button>
-                )}
-              </div>
-              
-              <div className="mb-8">
-                 <h2 className="text-xl font-hand font-bold text-[#ad207d] leading-snug overflow-visible">"{selectedEntry.headline || selectedEntry.reason}"</h2>
-              </div>
-
-              <div className="space-y-10">
-                {!socialMode && (
-                  <div className="space-y-3">
-                    <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                      <Zap size={18} /> Purpose
-                    </h4>
-                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
-                    <p className="text-lg text-gray-700 font-hand leading-relaxed">{selectedEntry.reason}</p>
-                  </div>
-                    </div>
-                )}
-
-                 {!socialMode && (
-                <div className="space-y-3">
-        
-                   <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Lightbulb size={18} /> Key Takeaway
-                  </h4>
-                  <div className="bg-pink-50/80 p-6 rounded-xl border border-yellow-100 relative overflow-hidden">
-                     <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.takeaway}</p>
-                  </div>
-                </div>
-                )}
-{!socialMode && (
-                <div className="space-y-3">
-                 
-                  <h4 className="flex items-center gap-2 text-sm font-bold text-[#ad207d] uppercase tracking-wide">
-                    <Waves size={18} /> Future Impact
-                  </h4>
-                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 relative overflow-hidden">
-                     <p className="text-gray-800 font-hand text-lg leading-relaxed relative z-10">{selectedEntry.impact}</p>
-                  </div>
-                  
-                </div>
-)}
-              </div>
-          
-              
-              {!socialMode && (
-                <div className="mt-12 pt-6 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400 font-mono">
-                  <span>ID: {selectedEntry.id}</span>
-                  <span>VERIFIED SUBMISSION</span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
         
     </div>
   );
