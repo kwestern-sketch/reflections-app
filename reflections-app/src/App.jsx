@@ -799,7 +799,7 @@ const openSlide = (entry) => {
       {/* Right/Bottom: Content Section */}
     <div className={`bg-white transition-all duration-500
  ${socialMode 
-    ? 'w-full h-1/2 p-8 flex flex-col overflow-y-auto' // Removed overflow-hidden and justify-center
+    ? 'w-full h-1/2 p-8 flex flex-col overflow-y-auto justify-left' // Removed overflow-hidden and justify-center
     : 'w-full md:w-7/12 p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-[85vh]'
   }`}>
 
