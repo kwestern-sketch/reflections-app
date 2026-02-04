@@ -754,7 +754,7 @@ const openSlide = (entry) => {
             onClick={() => setSocialMode(false)}
             className="flex items-center gap-2 px-5 py-2 bg-pink-50 text-[#ad207d] rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#ad207d] hover:text-white transition-all border border-[#ad207d]/20"
           >
-            <X size={14} /> Exit Quick Slide Mode
+            <X size={14} /> Exit Quick Card Mode
           </button>
           <button onClick={nextSlide} className="p-2.5 text-gray-500 hover:text-[#ad207d] hover:bg-pink-50 rounded-xl transition-all">
             <ChevronRight size={22} />
@@ -783,12 +783,7 @@ const openSlide = (entry) => {
           className="absolute inset-0 w-full h-full object-contain" 
         />
         
-        {/* Social Mode Watermark */}
-        {socialMode && (
-          <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 z-10">
-            <span className="text-white text-[10px] font-bold tracking-widest uppercase">Staff Excellence</span>
-          </div>
-        )}
+      
 
         {/* Normal Mode Mobile Overlay */}
         {!socialMode && (
@@ -802,11 +797,11 @@ const openSlide = (entry) => {
       </div>
       
       {/* Right/Bottom: Content Section */}
-      <div className={`bg-white transition-all duration-500
-        ${socialMode 
-          ? 'w-full h-1/2 p-8 flex flex-col justify-center overflow-hidden' 
-          : 'w-full md:w-7/12 p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-[85vh]'
-        }`}>
+    <div className={`bg-white transition-all duration-500
+  ${socialMode 
+    ? 'w-full h-1/2 p-10 flex flex-col justify-center text-center items-center overflow-hidden' 
+    : 'w-full md:w-7/12 p-8 md:p-12 overflow-y-auto'
+  }`}>
         
         {/* Header: Name & Social Toggle */}
         <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
@@ -832,17 +827,26 @@ const openSlide = (entry) => {
             <button 
               onClick={() => setSocialMode(true)}
               className="p-2 hover:bg-gray-100 rounded-full text-gray-400 hover:text-[#ad207d] transition-colors"
-              title="Quick Slide Mode"
+              title="Quick Card Mode"
             >
               <GalleryThumbnails size={20} />
             </button>
           )}
         </div>
         
-        {/* Headline Quote */}
-        <div className={`${socialMode ? 'mb-0' : 'mb-8'}`}>
-          <h2 className="text-xl font-hand font-bold text-[#ad207d] leading-snug">"{selectedEntry.headline || selectedEntry.reason}"</h2>
-        </div>
+     {/* Headline Quote */}
+<div className={`${socialMode ? 'mb-0' : 'mb-8'}`}>
+<h2 
+  className="font-hand font-bold text-[#ad207d] leading-snug"
+  style={{ 
+    fontSize: socialMode 
+      ? `${Math.max(16, 28 - (selectedEntry.reason?.length / 20))}px` 
+      : '' 
+  }}
+>
+  "{selectedEntry.headline || selectedEntry.reason}"
+</h2>
+</div>
 
         {/* Detailed Info (Normal Mode Only) */}
         {!socialMode && (
