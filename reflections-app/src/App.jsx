@@ -806,7 +806,7 @@ const openSlide = (entry) => {
               </div>
               
               <div className="mb-8">
-                 <h2 className="text-xl font-hand font-bold text-[#ad207d] leading-snug overflow-hidden">"{selectedEntry.headline || selectedEntry.reason}"</h2>
+                 <h2 className="text-xl font-hand font-bold text-[#ad207d] leading-snug overflow-visible">"{selectedEntry.headline || selectedEntry.reason}"</h2>
               </div>
 
               <div className="space-y-10">
