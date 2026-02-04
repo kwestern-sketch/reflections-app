@@ -773,7 +773,7 @@ const openSlide = (entry) => {
             </div>
             
             {/* Right: Content */}
-            <div className={`bg-white overflow-y-auto ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh] overflow-hidden'}`}>
+            <div className={`bg-white overflow-y-auto ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
               <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
                 <div className="flex items-center gap-4">
                    {selectedEntry.avatar ? (
@@ -806,7 +806,7 @@ const openSlide = (entry) => {
               </div>
               
               <div className="mb-8">
-                 <h2 className="text-xl font-hand font-bold text-[#ad207d] leading-snug">"{selectedEntry.headline || selectedEntry.reason}"</h2>
+                 <h2 className="text-xl font-hand font-bold text-[#ad207d] leading-snug overflow-hidden">"{selectedEntry.headline || selectedEntry.reason}"</h2>
               </div>
 
               <div className="space-y-10">
