@@ -540,7 +540,7 @@ const openSlide = (entry) => {
                          ) : (
                            <div className="text-center">
                              <User size={20} className="mx-auto text-gray-400 mb-1" />
-                             <span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider">Photo</span>
+                             <span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider">Upload Photo</span>
                            </div>
                          )}
                       </div>
