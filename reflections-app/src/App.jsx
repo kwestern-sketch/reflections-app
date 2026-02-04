@@ -891,6 +891,7 @@ const openSlide = (entry) => {
         )}
       </div>
     </div>
+    </div>
   </div>
 )}
         
