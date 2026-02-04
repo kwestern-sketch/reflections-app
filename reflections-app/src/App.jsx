@@ -764,7 +764,7 @@ const openSlide = (entry) => {
         onClick={() => setSocialMode(false)}
         className="flex items-center gap-2 px-5 py-2 bg-pink-50 text-[#ad207d] rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#ad207d] hover:text-white transition-all border border-[#ad207d]/20"
       >
-        <X size={14} /> Exit Social Mode
+        <X size={14} /> Exit Quick Slide Mode
       </button>
 
       {/* Next */}
@@ -779,15 +779,23 @@ const openSlide = (entry) => {
   </div>
 )}
 
-          <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row slide-up transition-all duration-500 ${socialMode ? 'max-w-6xl h-auto my-auto shadow-none border-2 border-[#ad207d]/10' : 'max-w-5xl max-h-full h-full md:h-auto'}`}>
+          <div className={`bg-white w-full rounded-2xl overflow-hidden shadow-2xl flex flex-col slide-up transition-all duration-500 
+  ${socialMode ? 'max-w-[550px] aspect-[4/5] md:aspect-square my-auto shadow-xl border-2 border-[#ad207d]/10' : 'md:flex-row max-w-5xl max-h-full h-full md:h-auto'}`}>
             
             {/* Left: Image */}
-            <div className={`bg-black relative shrink-0 ${socialMode ? 'md:w-1/2 h-[500px]' : 'md:w-5/12 h-64 md:h-auto'}`}>
+          <div className={`bg-white overflow-y-auto ${socialMode ? 'w-full h-1/2 p-8 flex flex-col justify-center overflow-hidden' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
               <img 
                 src={selectedEntry.image || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"} 
                 alt="Detail" 
                 className="absolute inset-0 w-full h-full object-contain" 
               />
+            
+{/* --- ADD THE WATERMARK HERE --- */}
+            {socialMode && (
+    <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 z-10">
+      <span className="text-white text-[10px] font-bold tracking-widest uppercase">Staff Excellence</span>
+    </div>
+  )}
               {!socialMode && (
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden">
                   <div className="absolute bottom-4 left-4 text-white">
