@@ -670,11 +670,11 @@ const openSlide = (entry) => {
         {view === 'gallery' && (
           <div className="space-y-16 fade-in">
             <div className="flex flex-col items-center text-center space-y-6 pt-4">
-              <BritTLLogo size="lg" />
+              <BritTLLogo size="md" />
               
               <div className="space-y-2 max-w-3xl">
-                <h2 className="text-4xl sm:text-5xl font-hand font-bold text-gray-900 leading-tight">
-                  BRIT Professional Development Gallery
+                <h2 className="text-4xl sm:text-3xl font-normal font-bold text-gray-900 leading-tight">
+                  Professional Development Gallery
                 </h2>
                 <p className="text-gray-500 text-lg font-normal pt-2">
                   Have a browse and add your own <span className="font-hand text-[#ad207d]">reflection</span>.
@@ -842,7 +842,7 @@ const openSlide = (entry) => {
   className="font-hand font-bold text-[#ad207d] leading-snug"
   style={{ 
     fontSize: socialMode 
-      ? `${Math.max(13, 22 - (selectedEntry.reason?.length / 20))}px` 
+      ? `${Math.max(14, 20 - (selectedEntry.reason?.length / 20))}px` 
       : '' 
   }}
 >
