@@ -493,7 +493,7 @@ const openSlide = (entry) => {
               <form onSubmit={handleSubmit} className="p-8 space-y-8">
                 {/* Image Upload */}
                 <div className="space-y-3">
-                  <label className="block text-sm font-bold text-gray-700">1. Upload a photo of your day</label>
+                  <label className="block text-sm font-bold text-gray-700">Upload a photo of your day</label>
                   <div className="relative group">
                     <input 
                       type="file" 
@@ -525,7 +525,7 @@ const openSlide = (entry) => {
 
                 {/* Personal Details */}
                 <div className="space-y-3">
-                  <label className="text-sm font-bold text-gray-700">2. Personal Details</label>
+                  <label className="text-sm font-bold text-gray-700">Your Details</label>
                   <div className="flex flex-col sm:flex-row gap-6 items-start">
                     <div className="relative group shrink-0 mx-auto sm:mx-0">
                       <input 
@@ -540,7 +540,7 @@ const openSlide = (entry) => {
                          ) : (
                            <div className="text-center">
                              <User size={20} className="mx-auto text-gray-400 mb-1" />
-                             <span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider">Upload Photo</span>
+                             <span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider">Add Photo</span>
                            </div>
                          )}
                       </div>
@@ -555,7 +555,7 @@ const openSlide = (entry) => {
                           value={formData.name}
                           onChange={handleInputChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#ad207d] focus:ring-2 focus:ring-pink-500/10 outline-none transition-all font-medium placeholder:text-gray-400"
-                          placeholder="Your Name (e.g. Jane Doe)"
+                          placeholder="Your Full Name"
                         />
                       </div>
                       <div className="space-y-1">
@@ -580,7 +580,7 @@ const openSlide = (entry) => {
                  <div className="space-y-2 pt-2">
                     <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
                       <Type size={16} className="text-[#ad207d]" />
-                      What did you do? 
+                      Please describe your day
                     </label>
                        <textarea 
                       name="headline"
@@ -589,7 +589,7 @@ const openSlide = (entry) => {
                       value={formData.headline}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#ad207d] focus:ring-2 focus:ring-pink-500/10 outline-none transition-all font-hand text-lg text-gray-600 placeholder:font-sans placeholder:text-sm placeholder:text-gray-400"
-                      placeholder="Give some details"
+                      placeholder="What did you do? Who did you see? Where did you go?"
                     />
                   </div>
 
@@ -726,7 +726,7 @@ const openSlide = (entry) => {
 
      {/* FULL SCREEN SLIDE MODAL */}
 {selectedEntry && (
-  <div className={`fixed inset-0 z-50 flex flex-col items-center backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-0 overflow-y-auto' : 'justify-center bg-gray-900/60 p-4 sm:p-8'}`}>
+  <div className={`fixed inset-0 z-50 flex flex-col items-center backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-4 overflow-y-auto' : 'justify-center bg-gray-900/60 p-4 sm:p-8'}`}>
     
     {/* Navigation Controls - Hidden in Social Mode */}
     {!socialMode && (
@@ -797,9 +797,9 @@ const openSlide = (entry) => {
       </div>
       
       {/* Right/Bottom: Content Section */}
-    <div className={`bg-white transition-all duration-500
- ${socialMode 
-    ? 'w-full h-1/2 p-8 flex flex-col overflow-y-auto justify-left' // Removed overflow-hidden and justify-center
+<div className={`bg-white transition-all duration-500
+  ${socialMode 
+    ? 'w-full h-1/2 p-6 flex flex-col overflow-y-auto touch-pan-y' 
     : 'w-full md:w-7/12 p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-[85vh]'
   }`}>
 
@@ -842,7 +842,7 @@ const openSlide = (entry) => {
   className="font-hand font-bold text-[#ad207d] leading-snug"
   style={{ 
     fontSize: socialMode 
-      ? `${Math.max(12, 24 - (selectedEntry.reason?.length / 20))}px` 
+      ? `${Math.max(13, 22 - (selectedEntry.reason?.length / 20))}px` 
       : '' 
   }}
 >
