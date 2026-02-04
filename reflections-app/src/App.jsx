@@ -673,7 +673,7 @@ const openSlide = (entry) => {
               <BritTLLogo size="lg" />
               
               <div className="space-y-2 max-w-3xl">
-                <h2 className="text-4xl sm:text-3xl font-hand font-bold text-gray-900 leading-tight">
+                <h2 className="text-4xl sm:text-4xl font-hand font-bold text-gray-900 leading-tight">
                   Professional Development Gallery
                 </h2>
                 <p className="text-gray-500 text-lg font-normal pt-2">
