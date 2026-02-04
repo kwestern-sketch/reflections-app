@@ -727,7 +727,8 @@ const openSlide = (entry) => {
       {/* MODAL */}
       {/* FULL SCREEN SLIDE MODAL */}
       {selectedEntry && (
-        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-gray-900/60 backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-0' : 'p-4 sm:p-8'}`}>
+        <div className={`fixed inset-0 z-50 flex flex-col items-center backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-0 overflow-y-auto' : 'justify-center bg-gray-900/60 p-4 sm:p-8'}`}>
+          
           {/* Controls - Hidden in Social Mode */}
           {!socialMode && (
             <>
@@ -773,7 +774,7 @@ const openSlide = (entry) => {
             </div>
             
             {/* Right: Content */}
-            <div className={`bg-white overflow-y-scroll ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
+            <div className={`bg-white overflow-y-auto ${socialMode ? 'md:w-1/2 p-12 overflow-visible' : 'md:w-7/12 p-8 md:p-12 max-h-[60vh] md:max-h-[85vh]'}`}>
               <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
                 <div className="flex items-center gap-4">
                    {selectedEntry.avatar ? (
