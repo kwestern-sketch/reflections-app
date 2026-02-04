@@ -670,10 +670,10 @@ const openSlide = (entry) => {
         {view === 'gallery' && (
           <div className="space-y-16 fade-in">
             <div className="flex flex-col items-center text-center space-y-6 pt-4">
-              <BritTLLogo size="md" />
+              <BritTLLogo size="lg" />
               
               <div className="space-y-2 max-w-3xl">
-                <h2 className="text-4xl sm:text-3xl font-normal font-bold text-gray-900 leading-tight">
+                <h2 className="text-4xl sm:text-3xl font-hand font-bold text-gray-900 leading-tight">
                   Professional Development Gallery
                 </h2>
                 <p className="text-gray-500 text-lg font-normal pt-2">
