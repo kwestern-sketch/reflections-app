@@ -580,7 +580,7 @@ const openSlide = (entry) => {
                  <div className="space-y-2 pt-2">
                     <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
                       <Type size={16} className="text-[#ad207d]" />
-                      Activity Headline: What did you do? 
+                      What did you do? 
                     </label>
                        <textarea 
                       name="headline"
@@ -614,7 +614,7 @@ const openSlide = (entry) => {
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
                       <Lightbulb size={16} className="text-[#ad207d]" />
-                      What was your one takeaway that you'd like to share?
+                      What was your takeaway that you'd like to share?
                     </label>
                     <textarea 
                       name="takeaway"
@@ -623,14 +623,14 @@ const openSlide = (entry) => {
                       value={formData.takeaway}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#ad207d] focus:ring-2 focus:ring-pink-500/10 outline-none transition-all font-hand text-lg text-gray-600 placeholder:font-sans placeholder:text-sm placeholder:text-gray-400"
-                      placeholder="Was there a lightbulb moment that shifted your thinking?"
+                      placeholder="Was there a moment that shifted your thinking?"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
                       <Waves size={16} className="text-[#ad207d]" />
-                      The Ripple Effect: What changes next week?
+                      What changes next week?
                     </label>
                     <textarea 
                       name="impact"
@@ -798,10 +798,12 @@ const openSlide = (entry) => {
       
       {/* Right/Bottom: Content Section */}
     <div className={`bg-white transition-all duration-500
-  ${socialMode 
-    ? 'w-full h-1/2 p-10 flex flex-col justify-left text-left items-left overflow-hidden' 
-    : 'w-full md:w-7/12 p-8 md:p-12 overflow-y-auto'
+ ${socialMode 
+    ? 'w-full h-1/2 p-8 flex flex-col overflow-y-auto' // Removed overflow-hidden and justify-center
+    : 'w-full md:w-7/12 p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-[85vh]'
   }`}>
+
+      <div className={socialMode ? 'my-auto w-full' : ''}>
         
         {/* Header: Name & Social Toggle */}
         <div className="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
@@ -840,7 +842,7 @@ const openSlide = (entry) => {
   className="font-hand font-bold text-[#ad207d] leading-snug"
   style={{ 
     fontSize: socialMode 
-      ? `${Math.max(16, 28 - (selectedEntry.reason?.length / 20))}px` 
+      ? `${Math.max(12, 24 - (selectedEntry.reason?.length / 20))}px` 
       : '' 
   }}
 >
