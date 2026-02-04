@@ -731,7 +731,7 @@ const openSlide = (entry) => {
     {/* Navigation Controls - Hidden in Social Mode */}
     {!socialMode && (
       <>
-        <button onClick={closeSlide} className="absolute top-4 right-4 text-pink/70 hover:text-white transition-colors z-50">
+        <button onClick={closeSlide} className="absolute top-4 right-4 text-[#ad207d]/70 hover:text-white transition-colors z-50">
           <X size={32} />
         </button>
         <button onClick={prevSlide} className="absolute left-2 sm:left-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
