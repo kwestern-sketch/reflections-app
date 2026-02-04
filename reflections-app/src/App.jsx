@@ -744,25 +744,7 @@ const openSlide = (entry) => {
             </>
           )}
 
-                {/* MODAL */}
-      {/* FULL SCREEN SLIDE MODAL */}
-      {selectedEntry && (
-        <div className={`fixed inset-0 z-50 flex flex-col items-center backdrop-blur-sm fade-in ${socialMode ? 'bg-[#f8f9fa] p-0 overflow-y-auto' : 'justify-center bg-gray-900/60 p-4 sm:p-8'}`}>
-          
-          {/* Controls - Hidden in Social Mode */}
-          {!socialMode && (
-            <>
-              <button onClick={closeSlide} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50">
-                <X size={32} />
-              </button>
-              <button onClick={prevSlide} className="absolute left-2 sm:left-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
-                <ChevronLeft size={48} />
-              </button>
-              <button onClick={nextSlide} className="absolute right-2 sm:right-8 text-white/40 hover:text-white transition-colors hidden sm:block p-2 hover:bg-white/10 rounded-full">
-                <ChevronRight size={48} />
-              </button>
-            </>
-          )}
+  
 
           {/* Controls - Visible ONLY in Social Mode */}
           {socialMode && (
