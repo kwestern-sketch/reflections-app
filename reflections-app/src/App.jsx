@@ -746,39 +746,33 @@ const openSlide = (entry) => {
 
   
 
-       {/* Controls - Visible ONLY in Social Mode */}
+     {/* Controls - Subtle Social Mode Nav */}
 {socialMode && (
-  <div className="fixed bottom-10 left-0 right-0 z-[100] flex justify-center items-center gap-4 px-4 pointer-events-none">
-    <div className="flex items-center gap-2 bg-black/80 backdrop-blur-md p-2 rounded-full shadow-2xl border border-white/20 pointer-events-auto">
+  <div className="fixed bottom-10 left-0 right-0 z-[100] flex justify-center items-center px-4 pointer-events-none">
+    <div className="flex items-center gap-3 bg-white/80 backdrop-blur-md p-1.5 rounded-2xl shadow-lg border border-[#ad207d]/10 pointer-events-auto">
       
-      {/* Previous Button */}
+      {/* Previous */}
       <button 
         onClick={prevSlide}
-        className="p-3 text-white hover:bg-white/10 rounded-full transition-all"
-        title="Previous"
+        className="p-2.5 text-gray-500 hover:text-[#ad207d] hover:bg-pink-50 rounded-xl transition-all"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft size={22} />
       </button>
 
-      <div className="h-6 w-[1px] bg-white/20 mx-1" />
-
-      {/* Exit Button */}
+      {/* Exit Button - Styled like your Department badges */}
       <button 
         onClick={() => setSocialMode(false)}
-        className="px-6 py-2 bg-white text-black rounded-full text-sm font-bold hover:bg-gray-200 transition-all flex items-center gap-2"
+        className="flex items-center gap-2 px-5 py-2 bg-pink-50 text-[#ad207d] rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-[#ad207d] hover:text-white transition-all border border-[#ad207d]/20"
       >
-        <X size={18} /> Exit Slide View Mode
+        <X size={14} /> Exit Social Mode
       </button>
 
-      <div className="h-6 w-[1px] bg-white/20 mx-1" />
-
-      {/* Next Button */}
+      {/* Next */}
       <button 
         onClick={nextSlide}
-        className="p-3 text-white hover:bg-white/10 rounded-full transition-all"
-        title="Next"
+        className="p-2.5 text-gray-500 hover:text-[#ad207d] hover:bg-pink-50 rounded-xl transition-all"
       >
-        <ChevronRight size={24} />
+        <ChevronRight size={22} />
       </button>
       
     </div>
