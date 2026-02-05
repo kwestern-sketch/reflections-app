@@ -178,7 +178,7 @@ const DEPARTMENTS = [
   "Counselling", "Dance", "Data & Exams", "Development", "Digital Arts", "English", 
   "Film & Media Production", "Finance", "HR", "Humanities", "IT", "Library", 
   "Maths", "MFL", "Music", "Musical Theatre", "Pastoral", "Production Arts", 
-  "Science", "Site", "SLT", "Student Services", "Theatre", "Visual Arts & Design"
+  "Science", "Site", "SLT", "Student Services", "T&L", "Theatre", "Visual Arts & Design"
 ];
 
 // Demo data as fallback
