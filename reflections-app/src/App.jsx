@@ -726,7 +726,7 @@ const openSlide = (entry) => {
                   Professional Development Gallery
                 </h2>
                 <p className="text-gray-500 text-lg font-normal pt-2">
-                  Have a browse of the gallery and use the button above to add your own <span className="font-hand text-[#ad207d]">reflection</span>.
+                  Have a browse of the gallery. Use the button at the top to add your own <span className="font-hand text-[#ad207d]">reflection</span>.
                 </p>
               </div>
 
