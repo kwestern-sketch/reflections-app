@@ -694,7 +694,7 @@ const openSlide = (entry) => {
         {view === 'gallery' && (
           <div className="space-y-16 fade-in">
             <div className="flex flex-col items-center text-center space-y-6 pt-4">
-              <BritTLLogo size="lg" />
+              <BritLogo size="lg" />
               
               <div className="space-y-2 max-w-3xl">
                 <h2 className="text-4xl sm:text-4xl font-hand font-bold text-gray-900 leading-tight">
