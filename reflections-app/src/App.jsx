@@ -80,7 +80,7 @@ const BritLogo = ({ size = "sm" }) => {
 
   return (
     <img 
-      src="https://lh3.googleusercontent.com/d/1c2yQ2p5PhtxgqiDqKIt89eY5Ockz0ORN?authuser=0" 
+      src="https://drive.google.com/drive-viewer/AKGpihZQp4zArhbx20-GkOOy4CVpeZ-NVpdoyEIgAWYbAjb8sxOFCJReYaz70EZZwEV6qnmfVQby4is4iwXzH1SqWlCVOlngJcszGrQ=s2560" 
       alt="Brit Logo" 
       className={`${size === "lg" ? "h-24" : "h-10"} w-auto object-contain transition-transform hover:scale-105`}
       onError={() => setImageError(true)}
