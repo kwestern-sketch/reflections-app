@@ -469,7 +469,7 @@ const openSlide = (entry) => {
       <header className={`bg-white border-b border-gray-200 sticky top-0 z-40 transition-all duration-500 ${socialMode ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setView('gallery')}>
-            <BritTLLogo size="sm" />
+            <BritLogo size="sm" />
            <div className="flex items-baseline gap-1 text-lg sm:text-xl">
              {/* 1. Desktop Version (Hidden on small screens) */}
     <span className="hidden sm:inline font-hand font-bold text-gray-800 tracking-tight">
