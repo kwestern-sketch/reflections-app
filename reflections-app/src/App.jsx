@@ -64,6 +64,30 @@ const BritTLLogo = ({ size = "sm" }) => {
   );
 };
 
+const BritLogo = ({ size = "sm" }) => {
+  const [imageError, setImageError] = useState(false);
+  const dimensions = size === "lg" ? "w-24 h-24" : "w-10 h-10";
+
+  if (imageError) {
+    return (
+      <div className={`${dimensions} bg-[#00ff00] flex items-center justify-center relative overflow-hidden shrink-0 rounded-md shadow-sm transition-transform hover:scale-105`}>
+        <div className="absolute bg-[#ad207d] w-[140%] h-[70%] transform -rotate-12 flex flex-col items-center justify-center shadow-sm">
+          <span className={`text-[#00ff00] font-black ${size === "lg" ? "text-[22px]" : "text-[10px]"} leading-none tracking-tighter transform translate-y-0.5`}>BRIT</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <img 
+      src="https://lh3.googleusercontent.com/d/1c2yQ2p5PhtxgqiDqKIt89eY5Ockz0ORN?authuser=0" 
+      alt="Brit Logo" 
+      className={`${size === "lg" ? "h-24" : "h-10"} w-auto object-contain transition-transform hover:scale-105`}
+      onError={() => setImageError(true)}
+    />
+  );
+};
+
 const PasscodeScreen = ({ onVerify }) => {
   const [input, setInput] = useState('');
   const [error, setError] = useState(false);
@@ -82,7 +106,7 @@ const PasscodeScreen = ({ onVerify }) => {
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-100 text-center space-y-6">
         <div className="flex justify-center mb-2">
-          <BritTLLogo size="lg" />
+          <BritLogo size="lg" />
         </div>
         
         <div className="space-y-2">
