@@ -80,7 +80,7 @@ const BritLogo = ({ size = "sm" }) => {
 
   return (
     <img 
-      src="https://drive.google.com/uc?export=view&id=1Ii8bNlKCZniVWE6slZB0nDz9wp79RyZr" 
+      src="https://lh3.googleusercontent.com/d/1Ii8bNlKCZniVWE6slZB0nDz9wp79RyZr?authuser=0" 
       alt="Brit Logo" 
       className={`${size === "lg" ? "h-24" : "h-10"} w-auto object-contain transition-transform hover:scale-105`}
       onError={() => setImageError(true)}
