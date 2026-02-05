@@ -64,6 +64,31 @@ const BritTLLogo = ({ size = "sm" }) => {
   );
 };
 
+const BritALTLogo = ({ size = "sm" }) => {
+  const [imageError, setImageError] = useState(false);
+  const dimensions = size === "lg" ? "w-24 h-24" : "w-10 h-10";
+
+  if (imageError) {
+    return (
+      <div className={`${dimensions} bg-[#00ff00] flex items-center justify-center relative overflow-hidden shrink-0 rounded-md shadow-sm transition-transform hover:scale-105`}>
+        <div className="absolute bg-[#ad207d] w-[140%] h-[70%] transform -rotate-12 flex flex-col items-center justify-center shadow-sm">
+          <span className={`text-[#00ff00] font-black ${size === "lg" ? "text-[22px]" : "text-[10px]"} leading-none tracking-tighter transform translate-y-0.5`}>BRIT</span>
+          <span className={`text-[#00ff00] font-black ${size === "lg" ? "text-[28px]" : "text-[12px]"} leading-none tracking-tighter`}>T&L</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <img 
+      src="https://lh3.googleusercontent.com/d/1d7OJ-8ZFONj1yHykS6Iqf1xpzuIEccmU?authuser=0" 
+      alt="Brit T&L" 
+      className={`${size === "lg" ? "h-24" : "h-10"} w-auto object-contain transition-transform hover:scale-105`}
+      onError={() => setImageError(true)}
+    />
+  );
+};
+
 const BritLogo = ({ size = "sm" }) => {
   const [imageError, setImageError] = useState(false);
   const dimensions = size === "lg" ? "w-24 h-24" : "w-10 h-10";
@@ -469,7 +494,7 @@ const openSlide = (entry) => {
       <header className={`bg-white border-b border-gray-200 sticky top-0 z-40 transition-all duration-500 ${socialMode ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setView('gallery')}>
-            <BritLogo size="sm" />
+            <BritALTLogo size="sm" />
            <div className="flex items-baseline gap-1 text-lg sm:text-xl">
              {/* 1. Desktop Version (Hidden on small screens) */}
     <span className="hidden sm:inline font-hand font-bold text-gray-800 tracking-tight">
