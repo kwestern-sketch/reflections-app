@@ -535,7 +535,7 @@ const openSlide = (entry) => {
             <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden">
               <div className="bg-[#ad207d] p-8 text-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#ad207d] rounded-full blur-3xl opacity-20 transform translate-x-20 -translate-y-20"></div>
-                <h2 className="text-2xl font-bold relative z-10">Tell us about your day</h2>
+                <h2 className="text-2xl font-bold relative z-10">Tell us about your professional development</h2>
                 <p className="text-gray-300 mt-2 relative z-10 font-hand text-lg">Please share by answering the prompts below...</p>
               </div>
             
@@ -629,7 +629,7 @@ const openSlide = (entry) => {
                  <div className="space-y-2 pt-2">
                     <label className="text-sm font-bold text-gray-700 flex items-center gap-2">
                       <Type size={16} className="text-[#ad207d]" />
-                      Please describe your day
+                      Please describe your day, activity, session or event
                     </label>
                        <textarea 
                       name="headline"
