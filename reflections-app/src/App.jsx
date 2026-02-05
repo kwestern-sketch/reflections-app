@@ -542,7 +542,7 @@ const openSlide = (entry) => {
               <form onSubmit={handleSubmit} className="p-8 space-y-8">
                 {/* Image Upload */}
                 <div className="space-y-3">
-                  <label className="block text-sm font-bold text-gray-700">Upload a photo of your day</label>
+                  <label className="block text-sm font-bold text-gray-700">Upload a photo from your day, activity, session or event</label>
                   <div className="relative group">
                     <input 
                       type="file" 
